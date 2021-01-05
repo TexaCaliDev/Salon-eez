@@ -1,5 +1,5 @@
 # Salon-eez
-this is a salon management site and my G.A week 4 project
+this is a salon management site and my G.A unit 4 project
 ****
 ## How to get started
 a salon manager will be able to sign in to their account to manage the employees,
