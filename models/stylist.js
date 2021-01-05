@@ -14,13 +14,34 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Stylist.init({
-    stylist_name: DataTypes.STRING,
-    stylist_email: DataTypes.STRING,
-    customer_id: DataTypes.INTEGER,
-    equip_id: DataTypes.INTEGER
+    stylist_name:{
+      type:DataTypes.STRING,
+      allowNull: false
+    },
+    stylist_email:{
+      type:DataTypes.STRING,
+      allowNull: false
+    },
+    customer_id:{
+      type: DataTypes.INTEGER,
+      field: 'customer_id',
+      references: {
+        model: 'equipments',
+        key: 'id'
+      } 
+    },
+    equip_id: {
+      type:DataTypes.INTEGER,
+      field: 'equip_id',
+      references: {
+        model: 'equipments',
+        key: 'id'
+      }
+    }
   }, {
     sequelize,
     modelName: 'Stylist',
+    tableName: 'stylists'
   });
   return Stylist;
 };
