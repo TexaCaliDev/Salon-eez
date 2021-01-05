@@ -17,10 +17,18 @@ module.exports = (sequelize, DataTypes) => {
     customer_name: DataTypes.STRING,
     customer_email: DataTypes.STRING,
     time_of_appoint: DataTypes.STRING,
-    stylist_id: DataTypes.INTEGER
+    stylist_id:{
+      type: DataTypes.INTEGER,
+      field: 'stylist_id',
+      references: {
+        model: 'stylist',
+        key: 'id'
+      }
+    }
   }, {
     sequelize,
     modelName: 'Customer',
+    tableName: 'customers'
   });
   return Customer;
 };
