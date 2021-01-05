@@ -18,6 +18,7 @@ const CreateUser = async (req,res) => {
         throw error
     }
 }
+
 const UpdateUser = async (req,res) => {
     try{
         let userId = parseInt(req.params.user_id)
@@ -30,6 +31,7 @@ const UpdateUser = async (req,res) => {
         throw error
     }
 }
+
 const DeleteUser = async (req,res) => {
     try{
         let userId = parseInt(req.params.user_id)
