@@ -17,10 +17,18 @@ module.exports = (sequelize, DataTypes) => {
     equip_name: DataTypes.STRING,
     type_of: DataTypes.STRING,
     price: DataTypes.STRING,
-    stylist_id: DataTypes.INTEGER
+    stylist_id: {
+      type: DataTypes.INTEGER,
+      field: 'stylist_id',
+      references:{
+        model: 'stylists',
+        key: 'id'
+      }
+    }
   }, {
     sequelize,
     modelName: 'Equipment',
+    tableName: 'equipments'
   });
   return Equipment;
 };
