@@ -20,9 +20,9 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      stylist_id: {
+      clientId: {
         type: Sequelize.INTEGER,
-        field: 'stylist_id',
+        field: 'client_id',
         references: {
           model: 'stylists',
           key: 'id'

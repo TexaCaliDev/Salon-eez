@@ -46,7 +46,7 @@ const CreateCustomer = async (req,res) => {
 
 const UpdateCustomer = async (req,res) => {
     try{
-        let customerId = parseInt(req.params.stylist_id)
+        let customerId = parseInt(req.params.customer_id)
         let updatedCustomer = await Customer.update(req.body,{
             where: {id: customerId},
             returning: true
@@ -59,11 +59,11 @@ const UpdateCustomer = async (req,res) => {
 
 const DeleteCustomer = async (req,res) => {
     try{
-        let customerId = parseInt(req.params.stylist_id)
-        let updatedCustomer = await Customer.destroy({
+        let customerId = parseInt(req.params.customer_id)
+        await Customer.destroy({
             where: {id:customerId}
         })
-        res.send(updatedCustomer)
+        res.send({message: `deleted customer with id ${customerId}`})
     }catch(error){
         throw error
     }

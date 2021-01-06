@@ -10,19 +10,19 @@ const GetUserDetails = async (req,res) => {
     }
 }
 
-const CreateUser = async (req,res) => {
-    try{
-        let userBody = {...req.body}
-        res.send(userBody)
-    } catch(error) {
-        throw error
+const CreateUser = async (req, res) => {
+    try {
+      const userBody= await User.create(req.body)
+      res.send(userBody)
+    } catch (error) {
+      throw error
     }
-}
+  }
 
 const UpdateUser = async (req,res) => {
     try{
         let userId = parseInt(req.params.user_id)
-        let updatedUser = await Account.update(req.body,{
+        let updatedUser = await User.update(req.body,{
             where: { id: userId},
             returning: true
         })

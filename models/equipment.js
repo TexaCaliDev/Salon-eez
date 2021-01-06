@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Equipment.belongsTo(models.Stylist,{
-        foreignKey: stylist_id,
+        foreignKey: 'owner_id',
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       })
@@ -22,9 +22,9 @@ module.exports = (sequelize, DataTypes) => {
     equip_name: DataTypes.STRING,
     type_of: DataTypes.STRING,
     price: DataTypes.STRING,
-    stylist_id: {
+    ownerId: {
       type: DataTypes.INTEGER,
-      field: 'stylist_id',
+      field: 'owner_id',
       references:{
         model: 'stylists',
         key: 'id'

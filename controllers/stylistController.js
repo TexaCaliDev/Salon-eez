@@ -32,8 +32,7 @@ const GetAllStylists = async (req,res) => {
 
 const CreateStylist = async (req,res) => {
     try{
-        let stylistBody = {...req.body}
-        const stylist = await Stylist.create(stylistBody)
+        const stylist = await Stylist.create(req.body)
         res.send(stylist)
     }catch(error){
         throw error
@@ -55,13 +54,14 @@ const UpdateStylist = async (req,res) => {
 
 const DeleteStylist = async (req,res) => {
     try{
-        const stylist = await Stylist.destroy({
+        const stylistId = parseInt(req.params.stylist_id)
+        await Stylist.destroy({
             where: {
                 id: req.params.stylist_id
             },
             returning: true
         })
-        res.send(stylist)
+        res.send({message: `deleted stylist with id ${stylistId}`})
     }catch(error){
         throw error
     }

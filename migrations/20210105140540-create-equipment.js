@@ -20,14 +20,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      stylist_id: {
-        type: Sequelize.INTEGER,
-        field: 'stylist_id',
-        references: {
-          model: 'stylists',
-          key: 'id'
-        }
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

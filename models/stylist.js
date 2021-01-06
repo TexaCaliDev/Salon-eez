@@ -12,12 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Stylist.hasMany(models.Customer, {
-        foreignKey: customer_id,
+        foreignKey: 'client_id',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       })
       Stylist.hasMany(models.Equipment, {
-        foreignKey: equip_id,
+        foreignKey: 'owner_id',
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       })
@@ -31,22 +31,6 @@ module.exports = (sequelize, DataTypes) => {
     stylist_email:{
       type:DataTypes.STRING,
       allowNull: false
-    },
-    customer_id:{
-      type: DataTypes.INTEGER,
-      field: 'customer_id',
-      references: {
-        model: 'equipments',
-        key: 'id'
-      } 
-    },
-    equip_id: {
-      type:DataTypes.INTEGER,
-      field: 'equip_id',
-      references: {
-        model: 'equipments',
-        key: 'id'
-      }
     }
   }, {
     sequelize,

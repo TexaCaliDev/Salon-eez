@@ -44,10 +44,10 @@ const CreateEquipment = async (req,res) => {
     }
 }
 
-const UpdatEquipment = async (req,res) => {
+const UpdateEquipment = async (req,res) => {
     try{
         let equipId = parseInt(req.params.equipment_id)
-        let updateEquip = await Equipment.update(req.body,{
+        let updateEquip = await Equipment.update(...req.body,{
             where: {id: equipId},
             returning: true
         })
@@ -74,6 +74,6 @@ module.exports = {
     GetAllEquipment,
     GetEquipment,
     CreateEquipment,
-    UpdatEquipment,
+    UpdateEquipment,
     DeleteEquipment
 }
