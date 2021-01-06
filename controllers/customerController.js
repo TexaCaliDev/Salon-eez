@@ -32,7 +32,11 @@ const GetAllCustomers = async (req,res) => {
 
 const CreateCustomer = async (req,res) => {
     try{
-        let customerBody = {...req.body}
+        let stylistId = parseInt(req.params.stylist_id)
+        let customerBody = {
+            stylistId,
+            ...req.body
+        }
         const customer = await Customer.create(customerBody)
         res.send(customer)
     }catch(error){
@@ -56,7 +60,10 @@ const UpdateCustomer = async (req,res) => {
 const DeleteCustomer = async (req,res) => {
     try{
         let customerId = parseInt(req.params.stylist_id)
-        let updatedCustomer = await Customer.destroy()
+        let updatedCustomer = await Customer.destroy({
+            where: {id:customerId}
+        })
+        res.send(updatedCustomer)
     }catch(error){
         throw error
     }
