@@ -11,7 +11,7 @@ const GetStylistDetails = async (req,res) => {
 
 const GetStylist = async (req,res) => {
     try{
-        let stylistId = parseInt(req.params.board_id)
+        let stylistId = parseInt(req.params.stylist_id)
         const stylist = await Stylist.findAll({
             where:{id:stylistId}
         })
