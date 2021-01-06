@@ -11,6 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Stylist.hasMany(models.Customer, {
+        foreignKey: customer_id,
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+      })
+      Stylist.hasMany(models.Equipment, {
+        foreignKey: equip_id,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      })
     }
   };
   Stylist.init({
