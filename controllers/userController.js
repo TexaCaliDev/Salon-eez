@@ -4,7 +4,16 @@ const GetUserDetails = async (req,res) => {
     try{
         const user = await User.findByPk(req.params.user_id)
         res.send(user)
-        console.lof(user)
+        console.log(user)
+    }catch(error){
+        throw error
+    }
+}
+
+const GetAllUsers = async (req,res) => {
+    try{
+        const user = await User.findAll()
+        res.send(user)
     }catch(error){
         throw error
     }
@@ -44,6 +53,7 @@ const DeleteUser = async (req,res) => {
 
 module.exports = {
     GetUserDetails,
+    GetAllUsers,
     CreateUser,
     UpdateUser,
     DeleteUser

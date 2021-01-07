@@ -13,7 +13,8 @@ const GetStylist = async (req,res) => {
     try{
         let stylistId = parseInt(req.params.stylist_id)
         const stylist = await Stylist.findAll({
-            where:{id:stylistId}
+            where:{id:stylistId},
+            returning: true
         })
         res.send(stylist)
     }catch(error){

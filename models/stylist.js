@@ -12,12 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Stylist.hasMany(models.Customer, {
-        foreignKey: 'client_id',
+        foreignKey: 'stylist_id',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       })
       Stylist.hasMany(models.Equipment, {
-        foreignKey: 'owner_id',
+        foreignKey: 'stylist_id',
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       })

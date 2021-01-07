@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Customer.belongsTo(models.Stylist,{
-        foreignKey: 'client_id',
+        foreignKey: 'stylist_id',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       })
@@ -22,12 +22,12 @@ module.exports = (sequelize, DataTypes) => {
     customer_name: DataTypes.STRING,
     customer_email: DataTypes.STRING,
     time_of_appoint: DataTypes.STRING,
-    client_id:{
+    stylist_id:{
       type: DataTypes.INTEGER,
-      field: 'client_id',
       references: {
         model: 'stylist',
-        key: 'id'
+        key: 'id',
+        as: 'stylist_id'
       }
     }
   }, {
