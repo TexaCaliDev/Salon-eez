@@ -9,18 +9,6 @@ const GetCustomerDetails = async (req,res) => {
     }
 } 
 
-const GetCustomer = async (req,res) => {
-    try{
-        let customerId = parseInt(req.params.customer_id)
-        const customer = await Customer.findAll({
-            where:{id: customerId}
-        }) 
-        res.send(customer)
-    }catch(error){
-        throw error
-    }
-} 
-
 const GetAllCustomers = async (req,res) => {
     try{
         const customer = await Customer.findAll()
@@ -72,7 +60,6 @@ const DeleteCustomer = async (req,res) => {
 module.exports = {
     GetCustomerDetails,
     GetAllCustomers,
-    GetCustomer,
     CreateCustomer,
     UpdateCustomer,
     DeleteCustomer
