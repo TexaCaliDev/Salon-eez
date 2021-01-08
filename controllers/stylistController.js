@@ -1,4 +1,4 @@
-const {Stylist} = require('../models')
+const {Stylist,Customer,Equipment} = require('../models')
 
 const GetStylistDetails = async (req,res) => {
     try{
@@ -17,6 +17,30 @@ const GetStylist = async (req,res) => {
             returning: true
         })
         res.send(stylist)
+    }catch(error){
+        throw error
+    }
+}
+
+const GetStylistCustomers = async (req,res) => {
+    try{
+        let stylist = parseInt(req.params.stylist_id)
+        let customerList = await Customer.findAll({
+            where: {stylist_id:stylist}
+        })
+        res.send(customerList)
+    }catch(error){
+        throw error
+    }
+}
+
+const GetStylistEquipment = async (req,res) => {
+    try{
+        let stylist = parseInt(req.params.stylist_id)
+        let equipmentList = await Equipment.findAll({
+            where: {stylist_id: stylist}
+        })
+        res.send(equipmentList)
     }catch(error){
         throw error
     }
@@ -70,6 +94,8 @@ const DeleteStylist = async (req,res) => {
 
 module.exports = {
     GetStylistDetails,
+    GetStylistCustomers,
+    GetStylistEquipment,
     GetAllStylists,
     GetStylist,
     CreateStylist,
