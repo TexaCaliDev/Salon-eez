@@ -14,7 +14,7 @@ module.exports = {
       company_email: {
         type: Sequelize.STRING
       },
-      company_password_digest: {
+      company_password: {
         type: Sequelize.STRING
       },
       createdAt: {
