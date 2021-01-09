@@ -28,6 +28,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('equipments',null,[])
+    return queryInterface.bulkDelete('equipments',null,[])
   }
 }

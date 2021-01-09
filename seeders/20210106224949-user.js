@@ -5,13 +5,13 @@ module.exports = {
    return queryInterface.bulkInsert('users',[{
      company_name: "Ben's company",
      company_email: "Ben@email.com",
-     company_password_digest: "ben",
+     company_password: "ben",
      createdAt: new Date(),
      updatedAt: new Date
    },{
     company_name: "Epik's company",
     company_email: "chris@email.com",
-    company_password_digest: "chris",
+    company_password: "chris",
     createdAt: new Date(),
      updatedAt: new Date
    }])
