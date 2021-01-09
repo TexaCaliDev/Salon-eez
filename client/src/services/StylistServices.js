@@ -9,7 +9,7 @@ export const __GetStylist = async () => {
     }
 }
 
-export const __GetStylistCustomers = async () => {
+export const __GetStylistCustomers = async (stylist_id) => {
     try{
         const stylist = await ApiClient.get(`/stylist/clients/${stylist_id}`)
         return stylist.data
@@ -18,7 +18,7 @@ export const __GetStylistCustomers = async () => {
     }
 }
 
-export const __GetSylistTool = async () => {
+export const __GetSylistTool = async (stylist_id) => {
     try{
         const stylist = await ApiClient.get(`stylist/tools/${stylist_id}`)
         return stylist.data
@@ -29,7 +29,7 @@ export const __GetSylistTool = async () => {
 
 export const __CreateStylist = async (formData) => {
     try{
-        const stylist = await ApiClient.post(`/stylist/create`)
+        const stylist = await ApiClient.post(`/stylist/create`,formData)
         return stylist.data
     }catch(error){
         throw error
@@ -45,7 +45,7 @@ export const __UpdateStylist = async (formData,stylist_id) => {
     }
 }
 
-export const __DeleteStylist = async () => {
+export const __DeleteStylist = async (stylist_id) => {
     try{
         const stylist = await ApiClient.delete(`stylist/delete/${stylist_id}`)
         return stylist.data 

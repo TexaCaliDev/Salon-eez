@@ -36,7 +36,7 @@ export const __UpdateCustomer = async (customer_id) => {
     }
 }
 
-export const __DeleteCustomer = async () => {
+export const __DeleteCustomer = async (customer_id) => {
     try{
         const customer = await ApiCLient.delete(`/customer/delete/${customer_id}`)
         return customer.data
