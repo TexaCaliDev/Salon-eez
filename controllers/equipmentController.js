@@ -60,10 +60,10 @@ const UpdateEquipment = async (req,res) => {
 const DeleteEquipment = async (req,res) => {
     try{
         let equipId = parseInt(req.params.equipment_id)
-        let Equip = await Equipment.destroy({
+        await Equipment.destroy({
             where: {id: equipId}
         })
-        res.send(updateEquip)
+        res.send({message: `Equipment with the id of ${equipId}`})
     }catch(error){
         throw error
     }
