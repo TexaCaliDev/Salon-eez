@@ -12,6 +12,7 @@ export const __GetStylist = async (stylist_id) => {
 export const __GetAllStylists = async () => {
     try{
         const stylist = await ApiClient.get(`stylist/view`)
+        return stylist.data
     }catch(error){
         throw error
     }

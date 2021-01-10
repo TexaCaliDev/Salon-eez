@@ -20,7 +20,7 @@ const Router = (props) => {
     const verifyTokenValid = async () => {
         const token = localStorage.getItem('token')
 
-        if (token) {
+        if (token && currentUser) {
             try{
                 const session = await __CheckSession
                 setAuthenticated(true)
@@ -66,7 +66,7 @@ const Router = (props) => {
 
                     <Route 
                     toggleAuthenticated={toggleAuthenticated} 
-                    path='/login' 
+                    exact path='/login' 
                     component={ props => 
                         <Login {...props} 
                         toggleAuthenticated={toggleAuthenticated}  
@@ -77,7 +77,7 @@ const Router = (props) => {
                     <ProtectedRoute 
                         authenticated={authenticated}
                         currentUser={currentUser}
-                        exact patch = '/home'
+                        exact path = '/home'
                         component={props=>
                             <Home {...props} 
                             authenticated={authenticated}

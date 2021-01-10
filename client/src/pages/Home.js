@@ -10,34 +10,33 @@ import { __GetStylist,__GetAllStylists } from "../services/StylistServices"
 const Home = (props) => {
    
     const [stylists , setStylists]=useState([])
+    const [searched, setSearched]=useState(false)
 
     const getStylists = async() => {
         try{
-            const stylists = await __GetAllStylists()
-            setStylists(stylists)
+            const res = await __GetAllStylists()
+            // setStylists(res)
+            console.log(res.data)
         }catch(error){
             console.log(error)
             throw error
         }
     }
+    console.log(props)
+
+    useEffect(() => {
+        getStylists()
+    },[searched])
    
 
     return(
         <div className='entire-container'>
             <div className='top'>
-            {/* {stylists.map((stylist)=>{
-                let location = {
-                    pathname:'/stylist',
-                    state: stylists
-                }
-                return stylists.length >=1 ? (
-                    <div>stylists</div>
-                ) : (
-                    <div>
-                        <p>hey , sit tight </p>
-                    </div>
-                )
-            })} */}
+            <p>hello {props.currentUser.user.name}</p>
+            </div>
+            <div>
+                <p>{stylists}</p>
+                <button onClick={getStylists}>stylists</button>
             </div>
         </div>
     )

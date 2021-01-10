@@ -26,10 +26,9 @@ const LogIn = (props)=>{
             
           const loginData = await __LoginUser(userInf)          
           props.toggleAuthenticated(true, loginData, () => (
-            props.history.push('/farts')
-            
-          )
-          )
+              console.log('')
+              ))
+              props.history.push('/home')
           
           
         } catch (error) {
