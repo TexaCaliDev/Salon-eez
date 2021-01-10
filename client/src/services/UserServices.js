@@ -2,21 +2,29 @@ import ApiClient from './ApiClient'
 
 export const __CheckSession = async()=>{
     try {
-      const res = await ApiClient.get('/user/session')
-      return res.data
+      const session = await ApiClient.get('/user/session')
+      return session.data
     } catch (error) {
       throw error
     }
   }
 
-export const __l
+export const __LoginUser = async (userData) => {
+    try{
+      const user = await ApiClient.post('/user/login',userData)
+      localStorage.setItem('token',user.data.token)
+      return user.data
+    }catch(error){
+        throw error
+    }
+}
 
 export const __CreateUser = async (formData) => {
     try{
         const user = await ApiClient.post(`/user/create`, formData)
         return user.data
     }catch(error){
-        error
+        throw error
     }
 }
 

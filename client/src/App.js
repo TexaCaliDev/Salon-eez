@@ -1,11 +1,10 @@
-import '../styles/App.css';
+
+import Router from './components/Router'
 
 function App() {
   return (
     <div className="App">
-    <div>
-      <p>oh fuck yea this works</p>
-    </div>
+      <Router />
     </div>
   );
 }
