@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { Switch,Route,withRouter} from 'react-router-dom'
 import ProtectedRoute from './ProtectedRoute'
 // import SignUp from '../pages/SignUp'
-// import Login from '../pages/Login'
+import Login from '../pages/Login'
 // import Home from '../pages/Home'
 import AboutUs from '../pages/AboutUs'
 // import User from '..pages/Users'
@@ -38,7 +38,7 @@ const Router = (props) => {
 
     const toggleAuthenticated = (value, user) => {
         setAuthenticated(value)
-        currentUser(user)
+        setCurrentUser(user)
     }
 
     useEffect(()=>{
@@ -53,7 +53,7 @@ const Router = (props) => {
             setAuthenticated={setAuthenticated}>
                 <Switch>
                     <Route 
-                    exact path='/'
+                    exact path='/home'
                     component={props => 
                         <AboutUs {...props} />} 
                     />
@@ -63,6 +63,13 @@ const Router = (props) => {
                     component={props=>
                         <SignUp {...props} />
                     } />
+
+                    <Route 
+                    toggleAuthenticated={toggleAuthenticated} 
+                    path='/login' 
+                    component={ props => 
+                        <Login {...props} toggleAuthenticated={toggleAuthenticated}  currentUser={currentUser}  />
+                    }/>
                 </Switch>
             </Layout>
         </div>

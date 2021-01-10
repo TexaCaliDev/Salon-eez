@@ -1,4 +1,4 @@
-const { hashPassword, passwordValid, createToken } = require('../middleware/Auth')
+const { hashPassword,passwordValid,createToken } = require('../middleware/Auth')
 const { User } = require('../models')
 
 const Register = async (req, res) => {
@@ -44,7 +44,7 @@ const SessionStatus = async (req, res) => {
     }
   }
 
-  module.exports = {
+module.exports = {
       Register,
       Login,
       SessionStatus

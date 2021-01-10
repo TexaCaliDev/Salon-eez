@@ -1,4 +1,5 @@
 const { User } = require('../models')
+const { hashPassword} = require('../middleware/Auth')
 
 const GetUserDetails = async (req,res) => {
     try{
@@ -21,7 +22,9 @@ const GetAllUsers = async (req,res) => {
 
 const CreateUser = async (req, res) => {
     try {
-      const userBody= await User.create(req.body)
+      const {name, email, password} = req.body
+      const password_digest = await hashPassword(password)
+    const userBody = await User.create({name,email,password_digest})
       res.send(userBody)
     } catch (error) {
       throw error
