@@ -3,7 +3,7 @@ import { Switch,Route,withRouter} from 'react-router-dom'
 import ProtectedRoute from './ProtectedRoute'
 // import SignUp from '../pages/SignUp'
 import Login from '../pages/Login'
-// import Home from '../pages/Home'
+import Home from '../pages/Home'
 import AboutUs from '../pages/AboutUs'
 // import User from '..pages/Users'
 import Layout from './Layout'
@@ -14,8 +14,8 @@ const Router = (props) => {
     const [currentUser,setCurrentUser]=useState(null)
     const [authenticated,setAuthenticated]=useState(false)
 
-    let RouteOne = () => props.history.push('/home')
-    let RouteTwo = () => props.history.push('/')
+    let RouteOne = () => props.history.push('/')
+    let RouteTwo = () => props.history.push('/home')
 
     const verifyTokenValid = async () => {
         const token = localStorage.getItem('token')
@@ -31,7 +31,7 @@ const Router = (props) => {
                 setCurrentUser(null)
                 setAuthenticated(false)
                 localStorage.clear()
-            RouteTwo()
+                RouteTwo()
             }
         }
     }
@@ -53,7 +53,7 @@ const Router = (props) => {
             setAuthenticated={setAuthenticated}>
                 <Switch>
                     <Route 
-                    exact path='/home'
+                    exact path='/'
                     component={props => 
                         <AboutUs {...props} />} 
                     />
@@ -68,8 +68,23 @@ const Router = (props) => {
                     toggleAuthenticated={toggleAuthenticated} 
                     path='/login' 
                     component={ props => 
-                        <Login {...props} toggleAuthenticated={toggleAuthenticated}  currentUser={currentUser}  />
+                        <Login {...props} 
+                        toggleAuthenticated={toggleAuthenticated}  
+                        currentUser={currentUser}  
+                        />
                     }/>
+
+                    <ProtectedRoute 
+                        authenticated={authenticated}
+                        currentUser={currentUser}
+                        exact patch = '/home'
+                        component={props=>
+                            <Home {...props} 
+                            authenticated={authenticated}
+                            currentUser={currentUser}
+                            />
+                        }
+                    />
                 </Switch>
             </Layout>
         </div>

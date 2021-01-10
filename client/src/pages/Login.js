@@ -6,8 +6,8 @@ import {__LoginUser} from '../services/UserServices'
 const LogIn = (props)=>{
 
     
-    const [ email,setEmail]=useState('')
-    const [ password,setPassword]=useState('')
+    const [email,setEmail]=useState('')
+    const [password,setPassword]=useState('')
     const [formError,setFormError]=useState(false)
 
     
@@ -18,18 +18,20 @@ const LogIn = (props)=>{
     const handleChangeP =({target})=>{
         setPassword(target.value)
     }
-
+    console.log(props)
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const userInf={email, password}
+          const userInf={email, password}
             
           const loginData = await __LoginUser(userInf)          
-          props.toggleAuthenticated(true, loginData.user, () =>
-            props.history.push('/home')
+          props.toggleAuthenticated(true, loginData, () => (
+            props.history.push('/farts')
+            
+          )
           )
           
-          return
+          
         } catch (error) {
             console.log(error)
           setFormError(true)
@@ -63,7 +65,7 @@ const LogIn = (props)=>{
                 />
                 
                 
-                <button className='button'>SignIn</button>
+                <button className='button' >SignIn</button>
             </form>
             
         </div>

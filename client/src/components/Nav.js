@@ -18,10 +18,12 @@ const Nav = (props)=>{
                     Stylists
                 </NavLink>
                 
-                <NavLink exact to='/' onClick={() => {
+                <NavLink onClick={() => {
                     localStorage.clear()
                     props.setAuthenticated(false)
-                }}>
+                    // props.setCurrentUser(null)
+                }} 
+                exact to='/'>
                 Sign Out
                 </NavLink>
 
