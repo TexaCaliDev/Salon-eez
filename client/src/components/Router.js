@@ -5,6 +5,7 @@ import ProtectedRoute from './ProtectedRoute'
 import Login from '../pages/Login'
 import Home from '../pages/Home'
 import AboutUs from '../pages/AboutUs'
+import Stylist from '../pages/Stylist'
 // import User from '..pages/Users'
 import Layout from './Layout'
 import { __CheckSession } from '../services/UserServices'
@@ -85,6 +86,20 @@ const Router = (props) => {
                             />
                         }
                     />
+
+                    <ProtectedRoute 
+                        authenticated={authenticated}
+                        currentUser={currentUser}
+                        exact path = '/stylist'
+                        component={props=>
+                            <Stylist {...props} 
+                            authenticated={authenticated}
+                            currentUser={currentUser}
+                            />
+                        }
+                    />
+
+                    
                 </Switch>
             </Layout>
         </div>

@@ -14,9 +14,9 @@ const Nav = (props)=>{
                     Home
                 </NavLink >
 
-                <NavLink exact to='/stylists'>
+                {/* <NavLink exact to='/stylists'>
                     Stylists
-                </NavLink>
+                </NavLink> */}
                 
                 <NavLink onClick={() => {
                     localStorage.clear()
