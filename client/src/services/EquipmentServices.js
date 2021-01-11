@@ -36,7 +36,7 @@ export const __UpdateEquipment = async (equipment_id) => {
     }
 }
 
-export const __DeleteEquipment = (equipment_id) => {
+export const __DeleteEquipment = async (equipment_id) => {
     try{
         const equip = await ApiClient.delete(`/equipment/delete/${equipment_id}`)
         return equip.data

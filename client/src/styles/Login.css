@@ -1,0 +1,28 @@
+.signup {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-left: 250px;
+    border: 2px solid black;
+    max-height: 400px;
+    width: 225px;
+    padding: 5px;
+    background-color: blueviolet;
+    color: white;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+html {
+    background-color: lightcoral;
+}
+
+.rendered-stylist-whole {
+    background-color: blueviolet;
+    color: white;
+    border-radius: 10px;
+}

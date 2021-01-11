@@ -14,6 +14,10 @@ const GetStylist = async (req,res) => {
         let stylistId = parseInt(req.params.stylist_id)
         const stylist = await Stylist.findAll({
             where:{id:stylistId},
+            include: [
+                { model: Customer},
+                { model: Equipment}
+            ],
             returning: true
         })
         res.send(stylist)
@@ -48,7 +52,12 @@ const GetStylistEquipment = async (req,res) => {
 
 const GetAllStylists = async (req,res) => {
     try{
-        const stylist = await Stylist.findAll()
+        const stylist = await Stylist.findAll({
+            include: [
+                { model: Customer},
+                {model: Equipment}
+            ],
+        })
         res.send(stylist)
     }catch(error){
         throw error

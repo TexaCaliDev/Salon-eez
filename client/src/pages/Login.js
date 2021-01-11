@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import TextInput from '../components/TextInput'
 // import '../styles/Login.css'
 import {__LoginUser} from '../services/UserServices'
+import '../styles/Login.css'
 
 const LogIn = (props)=>{
 
@@ -38,7 +39,7 @@ const LogIn = (props)=>{
       }
 
     return (
-    <div>
+    <div className='whole-div'>
         <div className='signup'>
             <form className='form flex-col box' onSubmit={handleSubmit}>
                 <h2>Log In</h2>
@@ -70,7 +71,7 @@ const LogIn = (props)=>{
         </div>
         <footer className='filler'>
             <h5>thanks for choosing us!</h5>
-            <cite>need any support? call: (123)-345-6789</cite>
+            <p>need any support? call: (123)-345-6789</p>
         </footer>
         </div>
     )
